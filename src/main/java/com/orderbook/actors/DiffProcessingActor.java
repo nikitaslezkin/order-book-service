@@ -9,7 +9,7 @@ import static com.orderbook.OrderBookService.diffDepthQueue;
 // This class analyses diff queue and apply them into current order book state
 public class DiffProcessingActor implements Runnable {
 
-    private static final long ROLL_OUT_TIMEOUT = 100; // ms
+    private static final long ROLL_OUT_TIMEOUT = 5; // ms
 
     private static final ObjectMapper objectMapper = new ObjectMapper();
 

@@ -9,7 +9,6 @@ import static com.orderbook.OrderBookService.diffDepthQueue;
 // This class fetches order book's diffs through websocket connection
 public class DiffFetchingActor {
     private static final String BASE_WS_URL = "wss://stream.binance.com:9443/ws/%s@depth";
-    private static final int BUFFER_SIZE_LIMIT = 100;
 
     // This static method construct and run thread listening binance websocket
     public static void initialiseAndRun(String symbol) {
@@ -25,9 +24,6 @@ public class DiffFetchingActor {
             @Override
             public void onMessage(String message) {
                 diffDepthQueue.add(message);
-                if (diffDepthQueue.size() == BUFFER_SIZE_LIMIT) {
-                    diffDepthQueue.remove();
-                }
             }
 
             @Override
